@@ -3,7 +3,9 @@ import { Hono } from 'hono';
 // Create a new Hono app with the base path set to /api
 const app = new Hono().basePath('/api');
 
-app.get('/', (c) => c.json({ hello: 'bun' }));
+app.get('/', (c) => {
+	return c.text('Hello, World!');
+});
 
 // Add a 404 handler
 app.notFound((c) => {
