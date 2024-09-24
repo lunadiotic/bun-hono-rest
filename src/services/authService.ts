@@ -23,4 +23,23 @@ export class AuthService {
 		const token = jwt.sign({ email }, JWT_SECRET, { expiresIn: '1h' });
 		return { token };
 	}
+
+	// Login user
+	static async login(email: string, password: string) {
+		const user = await UserModel.findUserByEmail(email);
+		if (!user) {
+			throw new Error('Invalid email or password');
+		}
+
+		// Verifikasi password dengan Bun.password
+		const isPasswordValid = await Bun.password.verify(password, user.password);
+		if (!isPasswordValid) {
+			throw new Error('Invalid email or password');
+		}
+
+		const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
+			expiresIn: '1h',
+		});
+		return { token };
+	}
 }
