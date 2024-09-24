@@ -1,4 +1,5 @@
 import { Hono } from 'hono';
+import authRoute from './routes/authRoutes';
 
 // Create a new Hono app with the base path set to /api
 const app = new Hono().basePath('/api');
@@ -6,6 +7,8 @@ const app = new Hono().basePath('/api');
 app.get('/', (c) => {
 	return c.text('Hello, World!');
 });
+
+app.route('/auth', authRoute);
 
 // Add a 404 handler
 app.notFound((c) => {
