@@ -1,5 +1,6 @@
 import { Hono } from 'hono';
 import authRoute from './routes/authRoutes';
+import adminRoute from './routes/adminRoutes';
 
 // Create a new Hono app with the base path set to /api
 const app = new Hono().basePath('/api');
@@ -9,6 +10,7 @@ app.get('/', (c) => {
 });
 
 app.route('/auth', authRoute);
+app.route('/admin', adminRoute);
 
 // Add a 404 handler
 app.notFound((c) => {
