@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
-import { nanoid } from 'nanoid';
-import { JWT_SECRET } from '../../config/jwt';
 import { UserRepository } from '../repositories/UserRepository';
+
+const SECRET_KEY = process.env.JWT_SECRET || 'default_secret_key'; // Fallback secret
 
 export class AuthService {
 	// Register new user
@@ -19,7 +19,7 @@ export class AuthService {
 		await UserRepository.createUser(username, email, hashedPassword);
 
 		// Generate JWT token
-		const token = jwt.sign({ email }, JWT_SECRET, { expiresIn: '1h' });
+		const token = jwt.sign({ email }, SECRET_KEY, { expiresIn: '1h' });
 		return { token };
 	}
 
@@ -36,7 +36,7 @@ export class AuthService {
 			throw new Error('Invalid email or password');
 		}
 
-		const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, {
+		const token = jwt.sign({ id: user.id, email: user.email }, SECRET_KEY, {
 			expiresIn: '1h',
 		});
 		return { token };
