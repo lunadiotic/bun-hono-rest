@@ -1,7 +1,7 @@
 import type { Context } from 'hono';
 import { AuthService } from '../services/authService';
 import { registerValidator, loginValidator } from '../validators/authValidator';
-import { handleError } from '../utils/handlerError';
+import { handleError } from '../exceptions/handlerError';
 
 export class AuthController {
 	static async register(ctx: Context) {

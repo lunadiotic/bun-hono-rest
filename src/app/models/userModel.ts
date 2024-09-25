@@ -1,6 +1,6 @@
 import { eq } from 'drizzle-orm/expressions';
-import { db } from '../config/db';
-import { userSchema } from '../database/schemas/userSchema';
+import { userSchema } from '../../database/schemas/userSchema';
+import { db } from '../../config/db';
 
 export class UserModel {
 	// Create new user

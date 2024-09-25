@@ -1,11 +1,7 @@
 import jwt from 'jsonwebtoken';
-import { config } from 'dotenv';
 import type { UserContext, UserPayload } from '../types/userContext';
 import type { Next } from 'hono';
-
-config(); // Memuat variabel environment dari .env
-
-const JWT_SECRET = process.env.JWT_SECRET || 'your_secret_key';
+import { JWT_SECRET } from '../../config/jwt';
 
 export const authMiddleware = async (ctx: UserContext, next: Next) => {
 	const authHeader = ctx.req.header('Authorization');

@@ -1,6 +1,6 @@
 import { Hono } from 'hono';
-import { authMiddleware } from '../middlewares/authMiddleware';
-import type { UserContext } from '../types/userContext';
+import type { UserContext } from '../app/types/userContext';
+import { authMiddleware } from '../app/middlewares/authMiddleware';
 
 const adminRoute = new Hono();
 

@@ -1,8 +1,7 @@
 import { UserModel } from '../models/userModel';
 import jwt from 'jsonwebtoken';
 import { nanoid } from 'nanoid';
-
-const JWT_SECRET = process.env.JWT_SECRET;
+import { JWT_SECRET } from '../../config/jwt';
 
 export class AuthService {
 	// Register new user

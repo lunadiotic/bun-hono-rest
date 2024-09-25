@@ -1,4 +1,4 @@
-import { UserModel } from '../../models/userModel';
+import { UserModel } from '../../app/models/userModel';
 
 // Data seed
 const users = [
