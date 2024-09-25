@@ -2,7 +2,7 @@ import { eq } from 'drizzle-orm/expressions';
 import { userSchema } from '../../database/schemas/userSchema';
 import { db } from '../../config/db';
 
-export class UserModel {
+export class UserRepository {
 	// Create new user
 	static async createUser(username: string, email: string, password: string) {
 		await db

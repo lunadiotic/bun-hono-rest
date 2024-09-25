@@ -1,4 +1,4 @@
-import { UserModel } from '../../app/models/userModel';
+import { UserRepository } from '../../app/repositories/UserRepository';
 
 // Data seed
 const users = [
@@ -17,7 +17,7 @@ export const userSeeder = async () => {
 
 		try {
 			// Insert the user into the database
-			UserModel.createUser(user.username, user.email, hashedPassword);
+			UserRepository.createUser(user.username, user.email, hashedPassword);
 			console.log(`Seeded user: ${user.username}`);
 		} catch (error) {
 			console.error(`Failed to seed user ${user.username}:`, error);

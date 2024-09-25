@@ -1,12 +1,7 @@
 import { Context } from 'hono';
-
-export interface UserPayload {
-	id: string;
-	username: string;
-	email: string;
-}
+import type { User } from '../models/User';
 
 export interface UserContext extends Context {
-	set(key: 'user', value: UserPayload): void;
-	get(key: 'user'): UserPayload | undefined;
+	set(key: 'user', value: User): void;
+	get(key: 'user'): User | undefined;
 }

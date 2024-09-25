@@ -1,7 +1,8 @@
 import jwt from 'jsonwebtoken';
-import type { UserContext, UserPayload } from '../types/userContext';
+import type { UserContext } from '../types/userContext';
 import type { Next } from 'hono';
 import { JWT_SECRET } from '../../config/jwt';
+import type { User } from '../models/User';
 
 export const authMiddleware = async (ctx: UserContext, next: Next) => {
 	const authHeader = ctx.req.header('Authorization');
@@ -14,7 +15,7 @@ export const authMiddleware = async (ctx: UserContext, next: Next) => {
 
 	try {
 		// Verifikasi token JWT dan dapatkan payload
-		const decoded = jwt.verify(token, JWT_SECRET) as UserPayload;
+		const decoded = jwt.verify(token, JWT_SECRET) as User;
 
 		// Simpan informasi user ke dalam context
 		ctx.set('user', decoded);
